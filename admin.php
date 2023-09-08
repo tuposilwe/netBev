@@ -313,6 +313,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
                           </tbody>
                         </table>
+                        <a class="btn btn-primary" href="report2.php" >Print</a>
                     </div>
                 </section>
 
@@ -357,6 +358,7 @@ if (mysqli_num_rows($result) > 0) {
 ?>
                           </tbody>
                         </table>
+                        <a class="btn btn-primary" href="report3.php" >Print</a>
                     </div>
                 </section>
                 <!--content 6-->
