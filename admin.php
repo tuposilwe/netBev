@@ -52,7 +52,7 @@ checkUserAuthentication();
     <div class="container-fluid">
         <div class="row">
             <!-- Left Side with Navigation Bar -->
-            <nav class="col-lg-3 col-md-4 col-sm-12 bg-dark text-bg-primary">
+            <nav class="col-lg-2 col-md-4 col-sm-12 bg-dark text-bg-primary">
                 <h4>ADMIN PANNEL</h4>
                 <ul class="nav flex-column">
                     <!-- Dropdown Menu -->
@@ -92,7 +92,7 @@ checkUserAuthentication();
             </nav>
 
             <!-- Right Side to Display Content -->
-            <main class="col-lg-9 col-md-8 col-sm-12" style="min-height: 100vh; background-color: rgb(235, 233, 217);">
+            <main class="col-lg-10 col-md-9 col-sm-14" style="min-height: 100vh; background-color: rgb(235, 233, 217);">
                 <!-- Content 1 -->
                 <section id="content1" class="content" style="display: none;">
                 <div class="container1">

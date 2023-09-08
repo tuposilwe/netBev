@@ -141,7 +141,7 @@ if(isset($_POST["save"])){
             </nav>
 
             <!-- Right Side to Display Content -->
-            <main class="col-lg-9 col-md-8 col-sm-12" style="min-height: 100vh; background-color: rgb(245, 244, 241);">
+            <main class="col-lg-10 col-md-9 col-sm-14" style="min-height: 100vh; background-color: rgb(245, 244, 241);">
 
  <!--content 0-->
               <section id="content0" class="content" style="display: none;">
@@ -589,6 +589,7 @@ document.getElementById("datei").innerHTML=x;
 
 <script>
                var x=new Date();
+          
                document.getElementById("datee").innerHTML=x;
 
                function addRow2() {
