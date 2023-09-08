@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap-5.3.0-dist/css/bootstrap.min.css">
+  <script src="bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>
+  
+  <link rel="stylesheet" href="delivery.css">
+</head>
+<body>
+    <div class="container mt-3 text-md-center">
+        <h5 class="text-primary">DELIVERY NOTE</h5>
+        <h1 class="text-primary">DIAMI COMPANY LIMITED</h1>
+        <P class="text-primary">Sokoine opposite to the entrance to City Garden</P>
+        <p class="text-primary">P.O.BOX 2016 Mbeya-Tanzania</p>
+        <p class="text-primary">Mob: 0768663614/ 0686351155</p>
+        <p class="text-primary">E-mail: info@diami.co.tz/ Website www.diami.co.tz</p>
+    </div>
+    <div class="row container mt-3" id="jo3h">
+     <div class="col-sm-8 ">
+           <p class="text-primary">Client Name   :<input type="text" id="myinput"></p>
+           <p class="text-primary">address       :<input type="text" id="myinput"></p>
+           <p class="text-primary">telephone     :<input type="text" id="myinput"></p>
+           <p class="text-primary">location      :<input type="text" id="myinput"></p>
+           <p class="text-primary">contact person:<input type="text" id="myinput"></p>
+           <P class="text-primary"><I>please recieve the followinng goods:</I></P>
+    </div>
+     <div class="col-sm-4">
+           <p class="text-primary">No.</p>
+           <p class="text-primary"> Date: <span id="date"></span></p>
+           <p class="text-primary">TIN: 129-223-499</p>
+           <P class="text-primary">VRN: 40-026060-H</P>
+    </div>
+</div>
+<div class="container mt-3">
+    <table class="table">
+      <thead>
+        <tr class="table-active">
+          <th class="text-primary">QTY</th>
+          <th class="text-primary">PARTICULARS</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><button class="btn btn-danger" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+     <!-- Button to add rows -->
+     <button class="btn btn-primary" id="addRowBtn">Add Row</button>
+     <!-- Button to save the data -->
+     <button class="btn btn-success" id="saveBtn">Save</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script src="bootstrap-5.3.0-dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  var x=new Date();
+document.getElementById("date").innerHTML=x;
+ $(document).ready(function () {
+    // Function to add a new row to the table
+ function addRow() {
+        const newRow = `
+          <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><button class="btn btn-danger" onclick="deleteRow(this)">Delete</button></td>
+          </tr>
+        `;
+        $("#tableBody").append(newRow);
+        updateTotal();
+      }
+
+       // Function to delete a row
+       function deleteRow(row) {
+        $(row).closest("tr").remove();
+        updateTotal();
+      }
+
+       // Function to save the data
+       function saveData() {
+        const data = [];
+        $("#tableBody tr").each(function (index, row) {
+          const rowData = {};
+          $(row).find("input").each(function (i, input) {
+            const columnName = ['qty', 'particulars', 'rate', 'amount'][i];
+            rowData[columnName] = $(input).val();
+          });
+          data.push(rowData);
+        });
+
+        // Do something with the data (e.g., send it to the server or process it as needed)
+        console.log(data);
+        alert("Data has been saved!");
+      }
+
+       // Attach the click event to the "Add Row" button
+       $("#addRowBtn").click(function () {
+        addRow();
+      });
+
+      // Attach the click event to the "Delete" buttons on existing rows
+      $(document).on("click", ".btn-danger", function () {
+        deleteRow(this);
+      });
+
+      // Attach the click event to the "Save" button
+      $("#saveBtn").click(function () {
+        saveData();
+      });
+    });
+</script>
+<div class="row container mt-3" id="jo3h">
+  <div class="col-sm-7 ">
+    <p class="text-primary"><i>all the above goods were received in a good order and condition</i></p>
+        <p class="text-primary">Name:<input type="text" id="myinput"></p>
+        <p class="text-primary">phone:<input type="text" id="myinput"></p>
+        
+ </div>
+  <div class="col-sm-5">
+       <p></p>
+        <P class="text-primary">signature:<input type="text" id="myinput"></P>
+ </div>  
+
+</body>
+</html>

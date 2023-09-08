@@ -1,0 +1,94 @@
+.container1{
+    height: 100vh;
+    width: 74vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(235, 233, 217);
+}
+.container2{
+    height: 600px;
+    width: 800px;
+    padding-top: 0px;
+    border-radius: 22px;
+    box-shadow:0px 0px 50px rgb(43, 53, 43);
+}
+
+.container3{
+    margin-top: 60px;
+    margin-left: 137px;
+}
+
+input[type=name], select {
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid rgb(192, 85, 13);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color:transparent;
+  }
+  
+
+ 
+  
+input[type=password], select {
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid rgb(192, 85, 13);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color:transparent;
+  }
+  input[type=submit] {
+    width:500px;
+    background-color:rgb(192, 85, 13);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=email], select {
+    width: 500px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid rgb(192, 85, 13);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color:transparent;
+  }
+
+input[type=phone-number], select {
+  width: 500px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: none;
+  border-bottom: 2px solid rgb(192, 85, 13);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color:transparent;
+}
+
+.container5{
+ 
+    width: 100%;
+    background-color: rgb(112, 85, 187);
+ }
+
+
+  
+
+
+
+
+
