@@ -84,7 +84,7 @@ if(isset($_POST["save"])){
  
 
   } catch (mysqli_sql_exception) {
-   echo "Failed to create Invoice!!";
+   echo "<script>alert('Failed to create Invoice!')</script>";
   }
  
   mysqli_close($conn);
@@ -114,8 +114,8 @@ if(isset($_POST["save"])){
     <div class="container-fluid">
         <div class="row">
             <!-- Left Side with Navigation Bar -->
-            <nav class="col-lg-3 col-md-4 col-sm-12 bg-dark text-bg-primary">
-                <h4 >USER PANNEL</h4>
+            <nav class="col-lg-2 col-md-4 col-sm-12 bg-dark text-bg-primary">
+                <h4> USER PANNEL </h4>
                 <ul class="nav flex-column">
                     <!-- Dropdown Menu -->
                     <li class="nav-item">
@@ -200,8 +200,9 @@ if(isset($_POST["save"])){
                     </table>
                  </div>
               </section>
-                <!-- Content 1 -->
-                <section id="content1" class="content" style="display: none;">     
+              
+ <!-- Content 1 -->
+    <section id="content1" class="content" style="display: none;">     
 
 <form action="user_panel.php" method="post">
     <div class="container mt-3 text-md-center">
@@ -245,47 +246,42 @@ if(isset($_POST["save"])){
     </div>
 </div>
 
-  <div class="container mt-3 overflow-hidden">    
-    <table class="table-sm" style="background-color: rgb(250, 249, 241);">
+  <div class="container mt-3 ">    
+    <table  id="myTable1" class="table-sm" style="background-color: rgb(250, 249, 241);">
       <thead>
         <tr class="table-active">
-        <th class="text-primary">Row</th>
         <th class="text-primary">Qty</th>
         <th class="text-primary">Qty-Ty</th>
         <th class="text-primary">Particulars</th>
         <th class="text-primary">Price(@)</th>
         <th class="text-primary">Amount</th>
+        <th class="text-primary">ACTION</th>
       </thead>
       <tbody id="tableBody">
+      <tr>
+  <td><input type="number" name="quantity[]" /></td>
+  <td><input type="text" name="quantity_type[]" /></td>
+  <td><input type="text" name="particulars[]" /></td>
+  <td><input type="number" name="price[]" /></td>
+  <td><input type="text" name="amount[]" readonly /></td>
+   <td> <button class="btn btn-danger" type="button" onclick="deleteRow(this)">Delete</button></td>
+</tr>
 
-        <?php
-
-for ($i = 1; $i <= 6; $i++) {
-  echo '<tr>';
-  echo '<td>' . $i . '</td>';
-  echo '<td><input type="number" name="quantity[]" /></td>';
-  echo '<td><input type="text" name="quantity_type[]" /></td>';
-  echo '<td><input type="text" name="particulars[]" /></td>';
-  echo '<td><input type="number" name="price[]" /></td>';
-  echo '<td><input type="text" name="amount[]" readonly /></td>';
-  echo '</tr>';
-}
-
-?>
       </tbody>
       <tfoot>
-        <tr>
+        <!-- <tr>
         <td class="text-primary">E&O.E</td>
           <td colspan="1" class="text-end text-primary">TOTAL</td>
           <td></td>
           <td id="totalAmount" class="text-primary">00.0</td>
 
-        </tr>
+        </tr> -->
       </tfoot>
     </table>
           
 </form>
 
+<button class="btn btn-success" type="button" onclick="addRow1()">Add Row</button>
 
 <div class="row container mt-3" id="jo3h">
         <div class="col-sm-7 ">
@@ -306,6 +302,38 @@ for ($i = 1; $i <= 6; $i++) {
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+ 
+ <script>
+               var x=new Date();
+               document.getElementById("datee").innerHTML=x;
+
+               function addRow1() {
+            var table = document.getElementById("myTable1");
+            var row = table.insertRow(-1);
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            
+
+            cell1.innerHTML = '<input type="number" name="quantity[]" />';
+            cell2.innerHTML = '<input type="text" name="quantity_type[]" />';
+            cell3.innerHTML = '<td><input type="text" name="particulars[]" /></td>';
+            cell4.innerHTML = '<td><input type="number" name="price[]" /></td>';
+            cell5.innerHTML = '<input type="text" name="amount[]" readonly /></td>';
+            cell6.innerHTML ='<button class="btn btn-danger" type="button" onclick="deleteRow(this)">Delete</button>'
+        }
+
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+
+              </script>
 
   <script>
 var x=new Date();
@@ -358,8 +386,8 @@ if(mysqli_num_rows($result)>0){
                        <P class="text-primary">VRN: 40-026060-H</P>
                 </div>
             </div>
-              <div class="container mt-3 overflow-hidden">
-                <table class="table">
+              <div class="container mt-3">
+                <table class="table" id="myTable">
                   <thead>
                     <tr class="table-active">
                       <th class="text-primary">QTY</th>
@@ -367,41 +395,43 @@ if(mysqli_num_rows($result)>0){
                       <th class="text-primary">PARTICULARS</th>
                       <th class="text-primary">@</th>
                       <th class="text-primary">AMOUNT</th>
+                      <th class="text-primary">ACTION</th>
             
                     </tr>
                   </thead>
                   <tbody id="tableBody">
                    
-        <?php
+    
 
-for ($i = 1; $i <= 6; $i++) {
-  echo '<tr>';
-  echo '<td><input type="number" name="quantity[]" /></td>';
-  echo '<td><input type="text" name="quantity_type[]" /></td>';
-  echo '<td><input type="text" name="particulars[]" /></td>';
-  echo '<td><input type="number" name="price[]" /></td>';
-  echo '<td><input type="text" name="amount[]" readonly /></td>';
-  echo '</tr>';
-}
+  <tr>
+  <td><input type="number" name="quantity[]" /></td>
+  <td><input type="text" name="quantity_type[]" /></td>
+  <td><input type="text" name="particulars[]" /></td>
+  <td><input type="number" name="price[]" /></td>
+  <td><input type="text" name="amount[]" readonly /></td>
+   <td> <button class="btn btn-danger" type="button" onclick="deleteRow(this)">Delete</button></td>
+</tr>
 
-?>
                   </tbody>
                   <tfoot>
-                    <tr>
+                    <!-- <tr>
+                        
                       <td colspan="1" class="text-end text-primary">TOTAL</td>
                       <td></td>
                       <td id="totalAmount" class="text-primary">00.0</td>
                      
-                    </tr>
+                    </tr> -->
                   </tfoot>
                 </table>
               
             
               </div>
-
+              <button class="btn btn-success" type="button" onclick="addRow()">Add Row</button>
 
                 <div class="row container mt-3" id="jo3h">
+                
                     <div class="col-sm-7 ">
+                    
                           <p class="text-primary">Name:<input type="text" id="myinput"></p>
                           
                    </div>
@@ -411,6 +441,7 @@ for ($i = 1; $i <= 6; $i++) {
                    </div>  
 
                    <div class="container mt-3">
+                  
                             <!-- Button to save the data -->
                 <button class="btn btn-success" id="saveBtn" name="save">Save</button>
                 <a class="btn btn-primary" href="generatePDF3.php" >Preview</a>
@@ -424,6 +455,31 @@ for ($i = 1; $i <= 6; $i++) {
               <script>
                var x=new Date();
                document.getElementById("datee").innerHTML=x;
+
+               function addRow() {
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(-1);
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            
+
+            cell1.innerHTML = '<input type="number" name="quantity[]" />';
+            cell2.innerHTML = '<input type="text" name="quantity_type[]" />';
+            cell3.innerHTML = '<td><input type="text" name="particulars[]" /></td>';
+            cell4.innerHTML = '<td><input type="number" name="price[]" /></td>';
+            cell5.innerHTML = '<input type="text" name="amount[]" readonly /></td>';
+            cell6.innerHTML ='<button class="btn btn-danger" type="button" onclick="deleteRow(this)">Delete</button>'
+        }
+
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
               </script>
 
               
@@ -478,29 +534,20 @@ echo $row["invoice_no"]+1 . "</br>";
     </div>
 </div>
 <div class="container mt-3">
-    <table class="table">
+    <table class="table" id="myTable2">
       <thead>
         <tr class="table-active">
           <th class="text-primary">QTY</th>
           <th class="text-primary">PARTICULARS</th>
+          <th class="text-primary">ACTION</th>
         </tr>
       </thead>
       <tbody id="tableBody">
-
-
-      
-<?php
-
-for ($i = 1; $i <= 6; $i++) {
-echo '<tr>';
-echo '<td><input type="number" name="quantity[]" /></td>';
-echo '<td><input type="text" name="particulars[]" /></td>';
-
-echo '</tr>';
-}
-
-?>
-    
+<tr>
+<td><input type="number" name="quantity[]" /></td>
+<td><input type="text" name="particulars[]" /></td>
+<td> <button class="btn btn-danger" type="button" onclick="deleteRow(this)">Delete</button></td>
+</tr>
       </tbody>
     </table>
 
@@ -518,6 +565,8 @@ echo '</tr>';
 document.getElementById("datei").innerHTML=x;
 
 </script>
+<button class="btn btn-success" type="button" onclick="addRow2()">Add Row</button>
+
 <div class="row container mt-3" id="jo3h">
   <div class="col-sm-7 ">
     <p class="text-primary"><i>all the above goods were received in a good order and condition</i></p>
@@ -537,6 +586,30 @@ document.getElementById("datei").innerHTML=x;
  </div>
 </form>  
 </section>
+
+<script>
+               var x=new Date();
+               document.getElementById("datee").innerHTML=x;
+
+               function addRow2() {
+            var table = document.getElementById("myTable2");
+            var row = table.insertRow(-1);
+
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+           
+
+            cell1.innerHTML = '<input type="number" name="quantity[]" />';
+            cell2.innerHTML = '<input type="text" name="particulars[]" />';
+            cell3.innerHTML ='<button class="btn btn-danger" type="button" onclick="deleteRow(this)">Delete</button>'
+        }
+
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+              </script>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
