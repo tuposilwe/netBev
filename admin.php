@@ -53,7 +53,7 @@ checkUserAuthentication();
         <div class="row">
             <!-- Left Side with Navigation Bar -->
             <nav class="col-lg-3 col-md-4 col-sm-12 bg-dark text-bg-primary">
-                <h2 >ADMIN PANNEL</h2>
+                <h4>ADMIN PANNEL</h4>
                 <ul class="nav flex-column">
                     <!-- Dropdown Menu -->
                     <li class="nav-item">
@@ -99,6 +99,7 @@ checkUserAuthentication();
                     <div class="container2">
                         <div class="container3">
                             <form action="admin.php" method="post">
+                                    <h2> USER REGISTRATION</h2>
                                 <div>
                                     <strong><label>Username:</label><br></strong>
                                     <input type="name" placeholder="Enter Your first-name" size="40" name="user_name" required>

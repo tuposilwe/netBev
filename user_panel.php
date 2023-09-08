@@ -65,7 +65,7 @@ if(isset($_POST["save"])){
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    echo "Data saved successfully! Total Amount: $totalAmount";
+    echo " <script>alert('Data saved successfully! Total Amount: $totalAmount ')</script>";
 }
 
 
@@ -78,19 +78,19 @@ if(isset($_POST["save"])){
 
   try {
    mysqli_query($conn,$sql);
-   echo "Invoice is now Created!";
+   echo "<script>alert('Invoice is now Created! ')</script>";
 
    header("Location: generatePDF.php");
  
 
   } catch (mysqli_sql_exception) {
-   echo "Failed to create Invoice!";
+   echo "Failed to create Invoice!!";
   }
  
   mysqli_close($conn);
 
 }else{
- echo "Failed to create Invoice!";
+ echo "<script>alert('Failed to create Invoice!')</script>";
 }
 
 
@@ -114,7 +114,7 @@ if(isset($_POST["save"])){
     <div class="container-fluid">
         <div class="row">
             <!-- Left Side with Navigation Bar -->
-            <nav class="col-lg-2 col-md-4 col-sm-12 bg-dark text-bg-primary">
+            <nav class="col-lg-3 col-md-4 col-sm-12 bg-dark text-bg-primary">
                 <h4 >USER PANNEL</h4>
                 <ul class="nav flex-column">
                     <!-- Dropdown Menu -->
@@ -256,11 +256,11 @@ if(isset($_POST["save"])){
         <th class="text-primary">Price(@)</th>
         <th class="text-primary">Amount</th>
       </thead>
-      <tbody id="tableBody" oz>
+      <tbody id="tableBody">
 
         <?php
 
-for ($i = 6; $i <= 1; $i++) {
+for ($i = 1; $i <= 6; $i++) {
   echo '<tr>';
   echo '<td>' . $i . '</td>';
   echo '<td><input type="number" name="quantity[]" /></td>';
@@ -363,7 +363,7 @@ if(mysqli_num_rows($result)>0){
                   <thead>
                     <tr class="table-active">
                       <th class="text-primary">QTY</th>
-                      <th class="text-primary">Qty-Ty</th>
+                      <th class="text-primary">Qty-Type</th>
                       <th class="text-primary">PARTICULARS</th>
                       <th class="text-primary">@</th>
                       <th class="text-primary">AMOUNT</th>
@@ -374,7 +374,7 @@ if(mysqli_num_rows($result)>0){
                    
         <?php
 
-for ($i = 6; $i <= 1; $i++) {
+for ($i = 1; $i <= 6; $i++) {
   echo '<tr>';
   echo '<td><input type="number" name="quantity[]" /></td>';
   echo '<td><input type="text" name="quantity_type[]" /></td>';
@@ -491,7 +491,7 @@ echo $row["invoice_no"]+1 . "</br>";
       
 <?php
 
-for ($i = 1; $i <= 1; $i++) {
+for ($i = 1; $i <= 6; $i++) {
 echo '<tr>';
 echo '<td><input type="number" name="quantity[]" /></td>';
 echo '<td><input type="text" name="particulars[]" /></td>';
